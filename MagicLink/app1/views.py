@@ -7,7 +7,7 @@ from django.contrib import messages
 
 from django.conf import settings
 from app1.models import UserData
-
+from app1.email import send_mail
 from urllib.parse import urljoin
 from datetime import timedelta
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
@@ -55,7 +55,7 @@ def loginview(request: HttpRequest):
             print(magic_url)
             print()
             print()
-            
+            send_mail(email, magic_url)
             
             messages.success(request, "Login link has been sent to your provided email account. Please check! It will be active for 1 hour.")
 
